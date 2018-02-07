@@ -32,6 +32,7 @@ spec:
       - name: kafka
         image: {{ .Values.images.tags.kafka | quote }}
         imagePullPolicy: {{ default "" .Values.images.imagePullPolicy | quote }}
+{{ tuple $envAll $envAll.Values.pod.resources.kafka | include "helm-toolkit.snippets.kubernetes_resources" | indent 10 }}
         envFrom:
         - configMapRef:
             name: contrail-thirdparty

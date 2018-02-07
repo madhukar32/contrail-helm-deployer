@@ -32,6 +32,7 @@ spec:
       - name: zookeeper
         image: {{ .Values.images.tags.zookeeper | quote }}
         imagePullPolicy: {{ default "" .Values.images.imagePullPolicy | quote }}
+{{ tuple $envAll $envAll.Values.pod.resources.analytics_zookeeper | include "helm-toolkit.snippets.kubernetes_resources" | indent 10 }}
         envFrom:
         - configMapRef:
             name: contrail-analytics-zookeeper

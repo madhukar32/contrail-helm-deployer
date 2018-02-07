@@ -32,4 +32,5 @@ spec:
       - name: redis
         image: {{ .Values.images.tags.redis | quote }}
         imagePullPolicy: {{ default "" .Values.images.imagePullPolicy | quote }}
+{{ tuple $envAll $envAll.Values.pod.resources.redis | include "helm-toolkit.snippets.kubernetes_resources" | indent 10 }}
 {{- end }}
